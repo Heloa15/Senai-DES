@@ -1,0 +1,49 @@
+CREATE DATABASE PersonaSesi;
+USE PersonaSesi;
+
+CREATE TABLE alunos (
+       rm VARCHAR(4) PRIMARY KEY NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    serie VARCHAR(2) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    cpf VARCHAR(20) NOT NULL 
+);
+
+CREATE TABLE pais (
+       nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    cpf VARCHAR(20) NOT NULL,
+    rm_aluno VARCHAR(4),
+    FOREIGN KEY (rm_aluno) REFERENCES alunos(rm)
+);
+
+CREATE TABLE professores (
+       nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
+    disciplina VARCHAR(30) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    cpf VARCHAR(20) NOT NULL 
+);
+
+CREATE TABLE coordenadores (
+       nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
+    atuacao VARCHAR(30) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    cpf VARCHAR(20) NOT NULL 
+);
+
+CREATE TABLE atividades ( 
+    id_atividade INT AUTO_INCREMENT PRIMARY KEY,
+    materia VARCHAR(100) NOT NULL,
+    media DECIMAL(4),
+    tarefas VARCHAR(100),
+    provas VARCHAR(100),
+    rm_aluno VARCHAR(10),
+    FOREIGN KEY (rm_aluno) REFERENCES alunos(rm),
+);
+
+
+
+
